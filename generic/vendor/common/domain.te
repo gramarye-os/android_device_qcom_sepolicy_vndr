@@ -95,6 +95,8 @@ userdebug_or_eng(` -vendor_usta_app')
 userdebug_or_eng(` -vendor_ustaservice_app')
 userdebug_or_eng(` -vendor_sysmonapp_app_test')
 userdebug_or_eng(` -vendor_snapcam_app')
+# AOHP: aohp-containerd runs the Driver-shipped llama-server (ggml-hexagon, FastRPC) as an env unit
+- aohp_container_daemon
 }vendor_xdsp_device:chr_file *;
 
 neverallow { domain -init -vendor_init - ueventd } vendor_xdsp_device:chr_file ~{r_file_perms};
@@ -115,6 +117,7 @@ neverallow { domain
 - vendor_qvrd_vndr_cam
 userdebug_or_eng(` -vendor_nativehaltestservice')
 userdebug_or_eng(` -vendor_sysmonapp_app_test')
+- aohp_container_daemon
 } vendor_qdsp_device:chr_file *;
 neverallow { domain -init -vendor_init - ueventd } vendor_qdsp_device:chr_file ~{r_file_perms};
 neverallow { appdomain - shell userdebug_or_eng(`-vendor_sysmonapp_app_test') } vendor_qdsp_device:chr_file ~{ioctl read};
